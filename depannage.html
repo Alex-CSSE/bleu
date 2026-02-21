@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistance & Dépannage - Bleu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour la modale sur cette page */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+        }
+        .modal-content {
+            background-color: white; 
+            margin: 10% auto; 
+            padding: 30px; 
+            border-radius: 15px; 
+            width: 90%; 
+            max-width: 400px; 
+            position: relative; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .close-modal {
+            position: absolute; 
+            right: 20px; 
+            top: 15px; 
+            font-size: 28px; 
+            cursor: pointer;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-container">
+        <a href="index.html"><img src="bleu.png" class="brand-logo" alt="Logo"></a>
+        
+        <nav class="menu">
+            <a href="index.html" class="menu-link">Accueil</a>
+            <a href="mobile.html" class="menu-link">Mobiles</a>
+            <a href="internet.html" class="menu-link">Internet</a>
+        </nav>
+
+        <div class="search-account">
+            <div class="account-dropdown">
+                <a href="#" class="account-link">Mon Compte ▼</a>
+                <div class="dropdown-content">
+                    <a href="index.html">Tableau de bord</a>
+                    <a href="mabox.html">Ma Box</a>
+                    <a href="facture.html">Mes factures</a>
+                    <hr>
+                    <a href="#" style="color: red;">Déconnexion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <header class="shop-header">
+        <h1>Besoin d'aide ?</h1>
+        <p>Identifiez votre problème et trouvez une solution immédiate.</p>
+    </header>
+
+    <div class="help-grid">
+        <div class="help-card">
+            <div class="help-visual">
+                <img src="boxstartup.png" alt="Box">
+            </div>
+            <h3>Ma Livebox</h3>
+            <p>Problèmes de connexion ou débit lent.</p>
+            <a href="#" class="help-link">Dépanner ma box →</a>
+        </div>
+
+        <div class="help-card">
+            <div class="help-visual">
+                <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=400" alt="Mobile">
+            </div>
+            <h3>Mon Mobile</h3>
+            <p>SIM bloquée, code PUK ou panne réseau.</p>
+            <a href="#" class="help-link">Urgences mobile →</a>
+        </div>
+
+        <div class="help-card">
+            <div class="help-visual">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=400" alt="Facture">
+            </div>
+            <h3>Facture & Contrat</h3>
+            <p>Gérer mes prélèvements et mes options.</p>
+            <a href="#" class="help-link">Consulter l'aide →</a>
+        </div>
+    </div>
+
+    <section class="values-section">
+        <div class="section-title">
+            <h2>Nos valeurs de service</h2>
+            <p>Le SAV Bleu, c'est avant tout une présence humaine à vos côtés.</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-img">
+                    <img src="technicien.png" alt="Technicien">
+                </div>
+                <div class="value-content">
+                    <h3>Expertise Terrain</h3>
+                    <p>Nos 5 000 techniciens certifiés interviennent partout en France pour garantir votre connexion.</p>
+                </div>
+            </div>
+
+            <div class="value-item reverse">
+                <div class="value-img">
+                    <img src="camionette.png" alt="Camionnette">
+                </div>
+                <div class="value-content">
+                    <h3>Intervention 24h</h3>
+                    <p>Nos équipes mobiles se déplacent à votre domicile en un temps record pour rétablir vos services.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-img">
+                    <img src="hotline.png" alt="Hotline">
+                </div>
+                <div class="value-content">
+                    <h3>À votre écoute</h3>
+                    <p>Nos conseillers basés en France vous répondent 7j/7 pour une assistance personnalisée.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="support-banner">
+        <div class="support-text">
+            <h2>Le problème persiste ?</h2>
+            <p>Prenez rendez-vous avec un conseiller en boutique.</p>
+        </div>
+        <button id="open-modal-btn" class="orange-btn">Prendre RDV</button>
+    </div>
+</main>
+
+<footer class="footer-bottom">
+    <p>© 2026 Bleu Télécom | Service Client</p>
+</footer>
+
+<div id="appointment-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="close-appt-modal">&times;</span>
+        
+        <h2 style="color: #0050FF; margin-bottom: 10px;">Prendre rendez-vous</h2>
+        <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">Rencontrez un conseiller Bleu en boutique.</p>
+        
+        <form id="appointment-form">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Choisir ma boutique</label>
+                <select id="appt-store" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                    <option value="" disabled selected>Sélectionnez une ville</option>
+                    <option value="Paris">Paris - Opéra</option>
+                    <option value="Lyon">Lyon - Bellecour</option>
+                    <option value="Marseille">Marseille - Canebière</option>
+                    <option value="Lille">Lille - Flandres</option>
+                    <option value="Rennes">Rennes - Alma</option>
+                    <option value="Nantes">Nantes - Graslin</option>
+                    <option value="Strasbourg">Strasbourg - Centre</option>
+                    <option value="Reims">Reims - Cathédrale</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Date souhaitée</label>
+                <input type="date" id="appt-date" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Heure</label>
+                <select id="appt-time" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                    <option value="09:00">09:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="16:00">16:00</option>
+                </select>
+            </div>
+
+            <button type="submit" class="orange-btn" style="width: 100%; padding: 12px; background: #0050FF; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Confirmer le rendez-vous</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Espace Bleu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .scroll-container:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div style="background: #f0f4ff; border-bottom: 1px solid #e0e7ff; overflow: hidden; white-space: nowrap; padding: 10px 0;">
+            <div class="scroll-container" style="display: inline-block; animation: scroll-left 25s linear infinite;">
+                <span style="font-weight: bold; color: #0050FF; margin-right: 30px;">NOS BOUTIQUES :</span>
+                
+                <a href="boutique-details.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Paris Opéra <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+                <a href="Lyon.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Lyon Bellecour <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+                <a href="Marseille.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Marseille Canebière <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+                <a href="Lille.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Lille Flandres <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+                <a href="Rennes.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Rennes Alma <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+                <a href="Nantes.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Nantes Graslin <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+                <a href="Strasbourg.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Strasbourg Centre <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+                <a href="Reims.html" style="color: #666; text-decoration: none; margin-right: 40px; font-size: 0.9rem;">📍 Reims Cathédrale <span style="color: #2ecc71; font-size: 0.8rem;">● Ouvert</span></a>
+            </div>
+        </div>
+
+        <div class="header-container">
+            <a href="index.html"><img src="bleu.png" class="brand-logo" alt="Logo"></a>
+            <nav class="menu">
+                <a href="mobile.html" class="menu-link">Mobiles</a>
+                <a href="internet.html" class="menu-link">Internet</a>
+            </nav>
+            <div class="search-account">
+                <div class="account-dropdown">
+                    <a href="#" class="account-link">Mon Compte ▼</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Tableau de bord</a>
+                        <a href="mabox.html">Ma Box</a>
+                        <a href="facture.html">Mes factures</a>
+                        <hr>
+                        <a href="#" style="color: red;">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="alert-banner" id="invoice-alert">
+            <div class="alert-content">🔔 Votre facture est disponible (42,99€)</div>
+            <button class="close-alert" id="btn-close-alert">&times;</button>
+        </div>
+
+        <h1 class="page-title">Bonjour alex2cousseau</h1>
+
+        <div class="grid-layout">
+            <div class="tile">
+                <span class="category">Mobile</span>
+                <h2>06 12 34 56 78</h2>
+                <div class="tile-body">
+                    <p>Internet mobile</p>
+                    <div class="progress-container"><div class="progress-bar" style="width: 40%;"></div></div>
+                    <p><strong>40 Go</strong> restants sur 100 Go</p>
+                </div>
+                <div class="tile-footer"><a href="conso.html">Voir le détail</a></div>
+            </div>
+
+            <div class="tile">
+                <div class="category">Internet</div>
+                <h2>Livebox Fibre</h2>
+                <div class="tile-body">
+                    <p><span class="status-dot online"></span> Service fonctionnel</p>
+                    <p>Débit : 1.8 Gbps</p>
+                </div>
+                <div class="tile-footer"><a href="mabox.html">Gérer ma box →</a></div>
+            </div>
+
+            <div class="tile billing">
+                <span class="category">Facture</span>
+                <h2>42,99 €</h2>
+                <div class="tile-body">
+                    <p>Février 2026</p>
+                </div>
+                <div class="tile-footer"><a href="facture.html">Consulter</a></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Boutique Bleu</h4>
+                <ul>
+                    <li><a href="#">Téléphones & Mobiles</a></li>
+                    <li><a href="#">Forfaits mobile</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Assistance</h4>
+                <ul>
+                    <li><a href="contact.html">Nous contacter</a></li>
+                    <li><a href="depannage.html">Dépannage</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="store-finder-content" style="padding: 0 5%; margin-top: 20px;">
+            <h4 style="color: white; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 1px solid #444; padding-bottom: 10px;">Nos boutiques Bleu : </h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 50px; justify-content: flex-start;">
+                <div class="footer-column">
+                    <h5 style="color: #0050FF; margin-bottom: 12px; font-size: 0.9rem; font-weight: bold;">NORD & EST</h5>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 2;">
+                        <li><a href="Lille.html" style="color: #bbb; text-decoration: none;">📍 Lille Flandres</a></li>
+                        <li><a href="Reims.html" style="color: #bbb; text-decoration: none;">📍 Reims Cathédrale</a></li>
+                        <li><a href="Strasbour.html" style="color: #bbb; text-decoration: none;">📍 Strasbourg Centre</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h5 style="color: #0050FF; margin-bottom: 12px; font-size: 0.9rem; font-weight: bold;">OUEST</h5>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 2;">
+                        <li><a href="Rennes.html" style="color: #bbb; text-decoration: none;">📍 Rennes Alma</a></li>
+                        <li><a href="Nantes.html" style="color: #bbb; text-decoration: none;">📍 Nantes Graslin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h5 style="color: #0050FF; margin-bottom: 12px; font-size: 0.9rem; font-weight: bold;">SUD & PARIS</h5>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 2;">
+                        <li><a href="boutique-details.html" style="color: #bbb; text-decoration: none;">📍 Paris Opéra</a></li>
+                        <li><a href="Lyon.html" style="color: #bbb; text-decoration: none;">📍 Lyon Bellecour</a></li>
+                        <li><a href="Marseille.html" style="color: #bbb; text-decoration: none;">📍 Marseille Canebière</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: white; font-size: 0.8rem; text-decoration: underline;">Voir toutes les boutiques</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom" style="text-align: center; padding: 20px; border-top: 1px solid #444; margin-top: 30px;">
+            <p>&copy; 2026 Bleu Parodie - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <div id="promoModal" class="modal">
+        <div class="modal-content promo-style">
+            <span class="close-modal" id="closePromoBtn">&times;</span>
+            <div class="promo-badge">OFFRE FLASH ⚡</div>
+            <h2>L'iPhone 17 Pro à 1€ !</h2>
+            <img src="https://www.electrodepot.fr/media/catalog/product/cache/1a40d1f945549a9ec18309b0a600e55c/P10004409.jpg" alt="iPhone 17 Pro" class="promo-img">
+            <p>Pour toute souscription au forfait <strong>Bleu Max 300 Go</strong>.</p>
+            <div class="price-tag">1€</div>
+            <button class="orange-btn shake" onclick="location.href='mobile.html'">JE LE VEUX !</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+<div id="appointment-modal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);">
+    <div class="modal-content" style="background-color: white; margin: 10% auto; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
+        <span class="close-modal" id="close-appt-modal" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer;">&times;</span>
+        
+        <h2 style="color: #0050FF; margin-bottom: 10px;">Prendre rendez-vous</h2>
+        <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">Rencontrez un conseiller Bleu en boutique.</p>
+        
+        <form id="appointment-form">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Choisir ma boutique</label>
+                <select id="appt-store" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                    <option value="" disabled selected>Sélectionnez une ville</option>
+                    <option value="Paris">Paris - Opéra</option>
+                    <option value="Lyon">Lyon - Bellecour</option>
+                    <option value="Marseille">Marseille - Canebière</option>
+                    <option value="Lille">Lille - Flandres</option>
+                    <option value="Rennes">Rennes - Alma</option>
+                    <option value="Nantes">Nantes - Graslin</option>
+                    <option value="Strasbourg">Strasbourg - Centre</option>
+                    <option value="Reims">Reims - Cathédrale</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Date souhaitée</label>
+                <input type="date" id="appt-date" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Heure</label>
+                <select id="appt-time" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                    <option value="09:00">09:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="16:00">16:00</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Motif</label>
+                <select id="appt-reason" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                    <option>Internet / Fibre</option>
+                    <option>Mobile / Forfait</option>
+                    <option>SAV / Réparation</option>
+                </select>
+            </div>
+
+            <button type="submit" class="orange-btn" style="width: 100%; padding: 12px; background: #ff6600; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Confirmer le rendez-vous</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

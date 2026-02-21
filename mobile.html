@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Mobile - Bleu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html"><img src="bleu.png" class="brand-logo" alt="Logo"></a>
+            
+            <nav class="menu">
+                <a href="index.html" class="menu-link">Accueil</a>
+                <a href="mobile.html" class="menu-link" style="color: var(--bleu-orange);">Mobiles</a>
+                <a href="internet.html" class="menu-link">Internet</a>
+            </nav>
+
+            <div class="search-account">
+                <div class="account-dropdown">
+                    <a href="#" class="account-link">Mon Compte ▼</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Tableau de bord</a>
+                        <a href="mabox.html">Ma Box</a>
+                        <a href="facture.html">Mes factures</a>
+                        <hr>
+                        <a href="#" style="color: red;">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <header class="shop-header">
+            <h1>Choisissez votre nouveau smartphone</h1>
+            <p>Les dernières nouveautés avec les forfaits Bleu 5G</p>
+        </header>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="badge news">Nouveauté</span>
+                <div class="product-image">
+                    <img src="Iphone17.png" alt="iPhone">
+                </div>
+                <div class="product-info">
+                    <h3>iPhone 17</h3>
+                    <p class="price-from">À partir de</p>
+                    <p class="price">299€</p>
+                    <p class="price-detail">+ 8€/mois pendant 24 mois</p>
+                    <button class="orange-btn" style="width: 100%; margin-top: 15px;">Découvrir</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge promo">Offre Spéciale</span>
+                <div class="product-image">
+                    <img src="SamsungS25.png" alt="Samsung S25">
+                </div>
+                <div class="product-info">
+                    <h3>Samsung Galaxy S25</h3>
+                    <p class="price-from">À partir de</p>
+                    <p class="price">1€</p>
+                    <p class="price-detail">Après remboursement différé</p>
+                    <button class="orange-btn" style="width: 100%; margin-top: 15px;">Découvrir</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Googlepixel10.png" alt="Google Pixel 10">
+                </div>
+                <div class="product-info">
+                    <h3>Google Pixel 10</h3>
+                    <p class="price-from">À partir de</p>
+                    <p class="price">49€</p>
+                    <p class="price-detail">Avec forfait Bleu 200Go</p>
+                    <button class="orange-btn" style="width: 100%; margin-top: 15px;">Découvrir</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gérer ma Box - Bleu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="box-management-page">
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html"><img src="bleu.png" class="brand-logo" alt="Logo"></a>
+            
+            <nav class="menu">
+                <a href="index.html" class="menu-link">Accueil</a>
+                <a href="mobile.html" class="menu-link">Mobiles</a>
+                <a href="internet.html" class="menu-link">Internet</a>
+                <a href="mabox.html" class="menu-link" style="color: var(--bleu-orange);">Ma Box</a>
+            </nav>
+
+            <div class="search-account">
+                <div class="account-dropdown">
+                    <a href="#" class="account-link">Mon Compte ▼</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Tableau de bord</a>
+                        <a href="mabox.html">Ma Box</a>
+                        <a href="facture.html">Mes factures</a>
+                        <hr>
+                        <a href="#" style="color: red;">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="shop-header">
+            <h1>Ma Livebox Fibre</h1>
+            <p>Gérez votre connexion et vos équipements en temps réel.</p>
+        </header>
+
+        <div class="box-status-banner">
+            <div class="status-info">
+                <span class="status-dot online"></span>
+                <strong>Votre service est fonctionnel</strong>
+                <p>Dernière synchronisation : aujourd'hui à 10h42</p>
+                <p id="test-result" style="display:none; margin-top: 10px; font-weight: bold; color: #2ecc71;"></p>
+            </div>
+            
+            <div class="status-action">
+                <button id="test-line-btn" class="btn-outline">Tester ma ligne</button>
+            </div>
+        </div>
+
+        <div class="grid-layout">
+            <div class="tile wifi-card">
+                <div class="category">Réseau Local</div>
+                <h2>Wi-Fi Personnel</h2>
+                <div class="tile-body">
+                    <p><strong>Nom :</strong> Livebox-Bleu-A42</p>
+                    <p><strong>Mot de passe :</strong> ••••••••••••</p>
+                    <div class="wifi-qr">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=WIFI:S:Livebox-Bleu;T:WPA;P:monmotdepasse;;" alt="QR Code WiFi">
+                        <span>Scanner pour se connecter</span>
+                    </div>
+                </div>
+                <div class="tile-footer">
+                    <a href="#">Modifier les accès</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="category">Équipements</div>
+                <h2>Appareils connectés</h2>
+                <div class="tile-body">
+                    <ul class="device-list">
+                        <li>📱 iPhone de Léo <span class="tag">5GHz</span></li>
+                        <li>💻 MacBook Pro <span class="tag">Filaire</span></li>
+                        <li>📺 Décodeur TV 4K <span class="tag">Filaire</span></li>
+                    </ul>
+                </div>
+                <div class="tile-footer">
+                    <a href="#">Gérer les appareils</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="category">Sécurité</div>
+                <h2>Contrôle Parental</h2>
+                <div class="tile-body">
+                    <p>3 appareils sont actuellement sous restriction horaire.</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="tile-footer">
+                    <a href="#">Planifier des pauses</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-visual-center">
+             <img src="boxlivebox.png" alt="Votre Livebox">
+             <div class="box-details">
+                 <h3>Livebox</h3>
+                 <p>S/N : LK2109334820</p>
+             </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

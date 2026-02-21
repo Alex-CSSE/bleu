@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Bleu - Centre Ville</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="store-page">
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html"><img src="bleu.png" class="brand-logo" alt="Logo"></a>
+            
+            <nav class="menu">
+                <a href="index.html" class="menu-link">Accueil</a>
+                <a href="mobile.html" class="menu-link">Mobiles</a>
+                <a href="internet.html" class="menu-link">Internet</a>
+            </nav>
+
+            <div class="search-account">
+                <div class="account-dropdown">
+                    <a href="#" class="account-link">Mon Compte ▼</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Tableau de bord</a>
+                        <a href="mabox.html">Ma Box</a>
+                        <a href="facture.html">Mes factures</a>
+                        <hr>
+                        <a href="#" style="color: red;">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="store-grid">
+            <div class="store-info">
+                <a href="index.html" class="back-link">← Retour au tableau de bord</a>
+                <h1 class="store-title">Boutique Bleu <span class="orange-dot"></span></h1>
+                <p class="store-subtitle">Centre Ville</p>
+
+                <div class="services-list">
+                    <h3>Nos services en boutique</h3>
+                    <ul>
+                        <li>👋 Rendez-vous personnalisés</li>
+                        <li>🛠️ Support technique express</li>
+                        <li>📱 Testez nos derniers produits</li>
+                    </ul>
+                </div>
+
+                <div class="opening-hours">
+                    <h3>Horaires d'ouverture</h3>
+                    <p>Lundi - Samedi : 09h00 - 19h00</p>
+                    <p class="closed">Dimanche : Fermé</p>
+                </div>
+
+                <button class="orange-btn" id="open-modal-btn">Prendre rendez-vous</button>
+            </div>
+
+            <div class="store-visual">
+                <img src="boutique.png" alt="Intérieur Boutique Bleu" class="main-store-img">
+                <div class="mini-map">
+                    <p>📍 12 rue de la Paix, 75000 Paris</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Prendre rendez-vous</h2>
+            <p>Boutique Bleu - Centre Ville</p>
+            
+            <form id="appointment-form">
+                <div class="form-group">
+                    <label>Date souhaitée</label>
+                    <input type="date" id="appt-date" required>
+                </div>
+                <div class="form-group">
+                    <label>Heure</label>
+                    <select id="appt-time" required>
+                        <option value="09:00">09:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="16:30">16:30</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Motif</label>
+                    <select id="appt-reason">
+                        <option>Internet</option>
+                        <option>Mobile</option>
+                        <option>SAV</option>
+                    </select>
+                </div>
+                <button type="submit" class="orange-btn" style="width: 100%;">Confirmer le rendez-vous</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer-bottom">
+        <p>© 2026 Bleu Télécom | Service Boutique</p>
+    </footer>
+    
+    <script src="script.js"></script> 
+</body>
+</html>

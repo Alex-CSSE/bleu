@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identification - Bleu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <div class="login-container">
+        <div class="login-logo">
+            <img src="bleu.png" alt="Logo Bleu">
+        </div>
+
+        <div class="login-card">
+            <h1>Identifiez-vous</h1>
+            <p class="subtitle">Saisissez votre adresse e-mail ou votre numéro de mobile Bleu.</p>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="E-mail ou n° de mobile" required>
+                </div>
+
+
+                <div class="input-group password-container">
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <span id="togglePassword" class="eye-icon">👁️</span>
+</div>
+
+                <div class="form-options">
+                    <label><input type="checkbox"> Rester connecté</label>
+                    <a href="#">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Continuer</button>
+            </form>
+
+            <div class="login-footer">
+                <p>Pas encore de compte ? <a href="#">Créer un compte</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

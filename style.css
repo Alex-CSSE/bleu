@@ -1,0 +1,922 @@
+/* --- VARIABLES --- */
+:root {
+    --bleu-orange: #0050FF;
+    --bleu-dark: #001a4d;
+    --grey-bg: #f7f7f7;
+    --black-nav: #000000;
+    --border-color: #ddd;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--grey-bg);
+    color: #333;
+}
+
+/* --- STRUCTURE --- */
+.container {
+    max-width: 1100px; /* On empêche le site de s'étaler trop largement */
+    margin: 0 auto;    /* On centre le bloc au milieu de l'écran */
+    padding: 20px;
+}
+
+/* --- HEADER & MENU --- */
+.top-bar { background: var(--black-nav); color: white; padding: 10px 0; font-size: 12px; }
+.top-bar .content { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.top-bar a { color: #ccc; text-decoration: none; margin-right: 20px; }
+
+.main-header { background: white; border-bottom: 1px solid var(--border-color); padding: 15px 0; }
+.header-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+.brand-logo { height: 40px; }
+
+.menu { display: flex; gap: 20px; flex-grow: 1; justify-content: center; }
+.menu-link {
+    text-decoration: none; color: #333; font-weight: bold; 
+    text-transform: uppercase; font-size: 13px; position: relative; padding: 10px 0;
+}
+.menu-link::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 3px;
+    background: var(--bleu-orange); transition: 0.3s; transform: translateX(-50%);
+}
+.menu-link:hover::after { width: 100%; }
+
+.search-account { display: flex; gap: 20px; font-weight: bold; }
+
+/* --- ALERTE --- */
+.alert-banner {
+    background-color: #e6f0ff; border-left: 5px solid var(--bleu-orange);
+    padding: 15px 20px; display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 30px; border-radius: 4px;
+}
+.alert-content { display: flex; align-items: center; gap: 15px; }
+.close-alert { background: none; border: none; font-size: 24px; cursor: pointer; color: #666; }
+
+/* --- GRILLE DASHBOARD --- */
+.page-title { font-size: 2rem; font-weight: 300; margin-bottom: 30px; }
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Force 3 colonnes propres */
+    gap: 20px;
+}
+
+.tile {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+}
+.tile:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+.category { text-transform: uppercase; font-size: 11px; color: #888; }
+.tile h2 { margin: 10px 0; font-size: 1.3rem; }
+.tile-body { flex-grow: 1; margin: 15px 0; }
+
+.tile-footer a {
+    color: var(--bleu-orange); text-decoration: none; font-weight: bold;
+    border-bottom: 2px solid transparent; transition: 0.3s;
+}
+.tile:hover .tile-footer a { border-bottom-color: var(--bleu-orange); }
+
+/* Éléments spéciaux */
+.progress-container { background: #eee; height: 8px; border-radius: 4px; margin: 10px 0; overflow: hidden; }
+.progress-bar { background: var(--bleu-orange); height: 100%; }
+.status-dot.online { display: inline-block; width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; margin-right: 10px; }
+
+/* --- FOOTER --- */
+.main-footer {
+    background-color: #222 !important; /* On force le noir pour être sûr qu'il n'est pas blanc sur blanc */
+    color: white;
+    padding-top: 40px;
+    margin-top: 60px;
+    clear: both; /* Sécurité au cas où tu aurais des éléments flottants */
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+}
+.footer-store-finder { background: #333; padding: 20px 0; margin-top: 30px; }
+.store-finder-content { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 15px; }
+.search-box input { padding: 8px; border: none; border-radius: 4px 0 0 4px; }
+.search-box button { background: var(--bleu-orange); color: white; border: none; padding: 8px 15px; border-radius: 0 4px 4px 0; cursor: pointer; }
+.footer-bottom { text-align: center; padding: 20px; font-size: 11px; color: #666; }
+/* --- MODE FACTURE "PAPIER" --- */
+
+/* On change le fond seulement sur la page facture */
+.invoice-page {
+    background-color: #525659; /* Fond gris foncé type PDF */
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.invoice-wrapper {
+    padding: 40px 0;
+}
+
+.invoice-container {
+    background-color: white;
+    width: 210mm; /* Largeur exacte d'un A4 */
+    min-height: 297mm;
+    padding: 50px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-sizing: border-box; /* Important pour que le padding ne dépasse pas */
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--bleu-orange);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.invoice-meta h1 {
+    margin: 0;
+    color: var(--bleu-orange);
+    font-size: 28px;
+}
+
+.invoice-addresses {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.address-box p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoice-table th {
+    text-align: left;
+    background: #f8f9fa;
+    padding: 12px;
+    border-bottom: 2px solid #333;
+}
+
+.invoice-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.total-row td {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--bleu-orange);
+    border-top: 2px solid #333;
+    padding-top: 20px;
+}
+
+/* Le tampon "PAYÉE" */
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 100px;
+    color: rgba(46, 204, 113, 0.15); /* Vert transparent */
+    font-weight: bold;
+    border: 10px solid rgba(46, 204, 113, 0.15);
+    padding: 20px;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+/* Bouton impression */
+.btn-print {
+    background: var(--bleu-dark);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* --- RÉGLAGES IMPRESSION --- */
+@media print {
+    body { background: white; }
+    .invoice-page { background: white; }
+    .invoice-container { box-shadow: none; margin: 0; padding: 0; width: 100%; }
+    .btn-print { display: none; }
+}
+/* --- PAGE BOUTIQUE (STYLE ORANGE) --- */
+
+.store-page {
+    background-color: #fff; /* Fond blanc pur pour le store */
+}
+
+.store-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes */
+    gap: 50px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.orange-dot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: #0050FF; 
+    border-radius: 50%;
+}
+
+.store-title {
+    font-size: 3rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.store-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.back-link {
+    color: #0050FF;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.services-list h3, .opening-hours h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.services-list ul {
+    list-style: none;
+    padding: 0;
+    line-height: 2;
+}
+
+.closed {
+    color: #ff0000;
+}
+
+.orange-btn {
+    background-color: #0050FF;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px; /* Bouton très arrondi */
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+
+.orange-btn:hover {
+    background-color: #0050FF;
+    transform: scale(1.05);
+}
+
+.main-store-img {
+    width: 100%;
+    border-radius: 20px; /* Arrondis type Orange/Apple */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mini-map {
+    margin-top: 20px;
+    background: #f7f7f7;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .store-grid {
+        grid-template-columns: 1fr;
+    }
+}/* --- STYLE DE LA MODALE --- */
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Fond sombre */
+    backdrop-filter: blur(5px); /* Flou d'arrière-plan */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+/* --- BOUTIQUE MOBILE --- */
+.shop-header {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.shop-header h1 {
+    font-size: 2.5rem;
+    color: var(--bleu-dark);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #eee;
+    transition: 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge.news { background: #e6f0ff; color: var(--bleu-orange); }
+.badge.promo { background: #fff0e6; color: #0050FF; }
+
+.price-from { font-size: 12px; color: #888; margin-top: 15px; }
+.price { font-size: 2rem; font-weight: bold; color: #333; margin: 5px 0; }
+.price-detail { font-size: 13px; color: #666; }
+/* --- OFFRES INTERNET --- */
+.offer-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.offer-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    width: 350px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.offer-card.featured {
+    border: 2px solid var(--bleu-orange);
+    transform: scale(1.05); /* Légèrement plus grande */
+    box-shadow: 0 10px 30px rgba(0,80,255,0.1);
+}
+
+.promo-tag {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bleu-orange);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.offer-header h2 { margin-bottom: 5px; }
+.speed { color: var(--bleu-orange); font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; }
+
+.offer-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+    line-height: 2.5;
+}
+
+.price-section { margin: 25px 0; border-top: 1px solid #eee; padding-top: 20px; }
+.price { font-size: 2.5rem; font-weight: bold; margin: 0; }
+.price span { font-size: 1rem; color: #666; }
+.price-duration { font-size: 0.8rem; color: #888; }
+.box-visual {
+    width: 100%;
+    height: 200px; /* Hauteur fixe pour l'harmonie */
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.box-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image s'adapte sans se déformer */
+}
+
+.offer-card:hover .box-visual img {
+    transform: scale(1.05); /* Effet de zoom fluide au survol */
+    transition: 0.4s ease;
+}
+/* --- SECTION VALEURS SAV --- */
+.values-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid #eee;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.values-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* On inverse l'ordre pour un élément sur deux */
+.value-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.value-img {
+    flex: 1;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.value-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.value-content {
+    flex: 1;
+    text-align: left;
+}
+
+.value-content h3 {
+    font-size: 1.8rem;
+    color: var(--bleu-dark);
+    margin-bottom: 15px;
+}
+
+.value-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Adaptation pour Mobile */
+@media (max-width: 768px) {
+    .value-item, .value-item.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+    .value-img {
+        width: 100%;
+        height: 200px;
+    }
+}
+/* --- COMPLÉMENT PAGE DÉPANNAGE --- */
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.help-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.help-card:hover {
+    border-color: var(--bleu-orange);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.help-visual {
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.help-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.help-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--bleu-orange);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Bannière de contact en bas de dépannage */
+.support-banner {
+    background: var(--bleu-dark);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+/* --- PAGE MA BOX --- */
+.box-status-banner {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.wifi-qr {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.wifi-qr img { width: 60px; height: 60px; }
+.wifi-qr span { font-size: 12px; color: #666; }
+
+.device-list { list-style: none; padding: 0; }
+.device-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.tag {
+    background: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.box-visual-center {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.box-visual-center img {
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--bleu-orange);
+    color: var(--bleu-orange);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--bleu-orange);
+    color: white;
+}
+/* --- MENU DÉROULANT MON COMPTE --- */
+.account-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.account-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Le contenu du menu (caché par défaut) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; /* Aligné à droite */
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border-radius: 8px;
+    margin-top: 10px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+/* Style des liens à l'intérieur du menu */
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    transition: 0.2s;
+}
+
+/* Changement de couleur au survol des liens */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: var(--bleu-orange);
+}
+
+/* L'élément déclencheur : affiche le menu au survol */
+.account-dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeInDown 0.3s ease;
+}
+
+/* Petit trait de séparation */
+.dropdown-content hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 0;
+}
+
+/* Petite animation d'apparition */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.conso-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(var(--bleu-orange) 60%, #e0e0e0 0); /* 60% d'utilisation */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.inner-circle {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.big-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--bleu-orange);
+}
+/* Style spécifique pour la pub */
+.promo-style {
+    text-align: center;
+    border: 3px solid var(--bleu-orange);
+}
+
+.promo-badge {
+    background: #ff4757;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.promo-img {
+    width: 200px;
+    height: auto;
+    margin: 10px 0;
+}
+
+.price-tag {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--bleu-dark);
+    margin: 15px 0;
+}
+
+.timer {
+    font-size: 12px;
+    color: #ff4757;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* On s'assure que la modale est au-dessus de tout */
+.modal {
+    display: none; /* Cachée par défaut */
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+}
+/* Animation de vibration */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-5px); }
+  20% { transform: translateX(5px); }
+  30% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 2s infinite; /* Le bouton tremble toutes les 2 secondes */
+    display: inline-block;
+}
+
+/* On s'assure que le contenu ne déborde pas de la modale */
+.modal-content {
+    max-height: 90vh; 
+    overflow-y: auto;
+}
+
+.promo-img {
+    max-width: 150px; /* On réduit un peu la taille pour que tout rentre */
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+/* Grille spécifique pour le contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* La carte elle-même */
+.contact-tile {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden; /* Empêche l'image de dépasser des coins arrondis */
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+/* Conteneur de l'image pour un cadrage parfait */
+.contact-img-container {
+    width: 100%;
+    height: 200px;
+}
+
+.contact-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image remplit la zone sans se déformer */
+}
+
+/* Zone de texte */
+.contact-info {
+    padding: 25px;
+    text-align: left;
+}
+
+.contact-info h2 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+.contact-info p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Bouton stylisé */
+.btn-contact {
+    display: inline-block;
+    background-color: var(--bleu-orange);
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.contact-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}

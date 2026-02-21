@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Facture - Bleu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="invoice-page">
+
+    <div class="invoice-wrapper" style="width: 100%;">
+        
+        <header class="main-header">
+            <div class="header-container">
+                <a href="index.html">
+                    <img src="bleu.png" class="brand-logo" alt="Logo">
+                </a>
+                
+                <nav class="menu">
+                    <a href="index.html" class="menu-link">ACCUEIL</a>
+                    <a href="mobile.html" class="menu-link">MOBILES</a>
+                    <a href="internet.html" class="menu-link">INTERNET</a>
+                </nav>
+
+                <div class="search-account">
+                    <div class="account-dropdown">
+                        <a href="#" class="account-link">👤 Mon Compte ▼</a>
+                        <div class="dropdown-content">
+                            <a href="index.html">Tableau de bord</a>
+                            <a href="mabox.html">Ma Box</a>
+                            <a href="facture.html">Mes factures</a>
+                            <hr>
+                            <a href="#" style="color: red;">Déconnexion</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="invoice-container" style="margin: 40px auto; position: relative;">
+            
+            <div class="watermark">PAYÉE</div>
+            
+            <div class="invoice-header">
+                <img src="bleu.png" class="brand-logo" alt="Logo">
+                <div class="invoice-meta">
+                    <h1>FACTURE</h1>
+                    <p><strong>N° INV-2026-002</strong></p>
+                    <p>Date : 10/02/2026</p>
+                </div>
+            </div>
+
+            <div class="invoice-addresses">
+                <div class="address-box">
+                    <strong>Émetteur</strong>
+                    <p>Bleu Télécom SA<br>12 rue de l'Innovation<br>75008 Paris</p>
+                </div>
+                <div class="address-box">
+                    <strong>Destinataire</strong>
+                    <p>Alex Cousseau<br>45 Avenue des Champs<br>35000 Rennes</p>
+                </div>
+            </div>
+
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Période</th>
+                        <th>Prix HT</th>
+                        <th>Total TTC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Abonnement Fibre (Série Limitée)</td>
+                        <td>01/02 au 28/02</td>
+                        <td>32.50 €</td>
+                        <td>39.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>Facture mobile n° 06 12 34 56 78</td>
+                        <td>01/02 au 28/02</td>
+                        <td>3.32 €</td>
+                        <td>3.99 €</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="3">MONTANT TOTAL PRÉLEVÉ</td>
+                        <td>42.99 €</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="invoice-footer-info" style="margin-top: 30px; text-align: center;">
+                <p>Le prélèvement de 42,99 € sera effectué le 15/02/2026.</p>
+                <button class="btn-print" onclick="window.print()">Imprimer en PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
